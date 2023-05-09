@@ -1,0 +1,60 @@
+3aa6970a57e694fc61a86fcf810ba744
+https://api.themoviedb.org/3/movie/550?api_key=3aa6970a57e694fc61a86fcf810ba744
+
+Une fois l'application finis :
+-test lighthouse pour voir si l'application est préte à étre une PWA 
+-les points importants pour étre une PWA et passer les robots google
+    -avoir un manifest.json
+    -etre reponsive
+    -etre https (sécurité)
+    -Service worker
+
+Pour tester l'app sur google 
+En local adresse 10.0.2.2.5500
+Dans google 3 ptits boutons en haut à droite 
+    Add to home screen 
+    -> installe auto un raccourcis sur l'accueil du portable 
+    pour voir si l'app à toujours une dépendance avec le navigateur
+    
+-MANIFEST JSON 
+    A linker avec l'html 
+    name, shortname..... et les icones (192 et 512 obligatoires)!
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="/assets/icons/icon-96x96.png">
+    <link rel="apple-mobile-web-app-status-bar" content="white">
+    <link http-equi="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="white">
+
+    standalone dans display -> fais disparaitre l'url
+
+    VOIR MANIFEST.JSON
+
+-HTTPS sur mobile (on sécurise l'app/le port)
+    aller sur le lien : chrome://inspect/#devices
+        -> port forwading ->Port 5500  IP  localhost:5500
+    !!! il faut alors utiliser localhost:5500 et plus 10.0.2.2.5500
+
+
+-emulateur android
+
+-service worker (mise en cache des données)
+APPLICATION <--> SERVICE WORKER <--> CACHE
+                                <--> NETWORK
+    ON RECONNAIT UNE PWA A SA CAPACITE DETRE CONSULTABLE HORS LIGNE
+    D'AVOIR DONC DES DONNÉES EN CACHE GRACE AU SERVICE WORKER QUI MÉMORISE 
+    UN CERTAIN NOMBRE DE DONNÉES
+    créer un fichier serviceWorker.js (ou sw.js)
+    on crée un fichier app.js juste pour mettre une condition 
+    pour lancer le fichier serviceWorker et tout ce su'il contient si le navigateur 
+    posséde un serviceWorker
+    PUIS PARAMETRER LE SERVICE WORKER
+    -self1 on installe le cache
+    -self2 on attrape toutes ldes données
+    -self3 pour supprimer un cache si il y en plusieurs pour ne pas saturer la memoire du navigaterur
+
+    pour verifier que le service worker est bien installé 
+    -> inspecteur -> application -> service worker
+
+
+LIGHTOUSE VALIDÉE !!
